@@ -1,9 +1,9 @@
-import { test, expect } from "@playwright/test";
+import { test } from "@playwright/test";
 import PomManager from "../pages/PomManager.js";
 
 let pm;
 
-test.describe("Valid test cases for user authentication", () => {
+test.describe("Valid test cases", () => {
   test.beforeEach(async ({ page }) => {
     pm = new PomManager(page);
   });
@@ -15,7 +15,7 @@ test.describe("Valid test cases for user authentication", () => {
   });
 });
 
-test.describe("Invalid test cases for user authentication", () => {
+test.describe("Invalid test cases", () => {
   test.beforeEach(async ({ page }) => {
     pm = new PomManager(page);
   });

@@ -23,4 +23,9 @@ export default class CommonActions {
   async getText(selector) {
     return selector.textContent();
   }
+
+  async selectOption(selector, value){
+    await selector.selectOption(value)
+  }
+
 }
