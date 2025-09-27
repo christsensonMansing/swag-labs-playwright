@@ -8,12 +8,20 @@ export default class InventoryPage {
 
     this.pageTitle = page.getByText("Products");
     this.filterSelect = page.locator(".product_sort_container");
+    this.cartNumber = page.locator('.shopping_cart_badge')
   }
+
+
+  //user authentication functions
 
   async assertSuccessfulLogin() {
     expect(await this.actions.getUrl()).toContain("/inventory.html");
-    expect(await this.actions.getText(this.pageTitle)).toContain("Products");
+    await expect(this.pageTitle).toHaveText('Products')
   }
+
+
+
+  //product catalog functions
 
   async selectFilter(value) {
     await this.actions.selectOption(this.filterSelect, value);
@@ -47,4 +55,34 @@ export default class InventoryPage {
   async assertCorrectSort(actualArray, sortedArray) {
     expect(actualArray).toEqual(sortedArray);
   }
+
+
+
+  // shopping cart functions
+
+  async addToCart(name){
+    const product = await this.page.locator('.inventory_item').filter({hasText: name})
+    await this.actions.click(product.getByRole('button', {name: 'ADD TO CART'}))
+  }
+
+  async viewProduct(name){
+    await this.actions.click(this.page.getByRole('link', { name: name }))
+  }
+
+  async getCartNumber(){
+    const isVisible = await this.cartNumber.isVisible()
+    return isVisible ? await this.actions.getText(this.cartNumber) : 0
+  }
+
+  async assertCartNumber(number){
+    const cartNumber = (await this.getCartNumber()).toString()
+    expect(cartNumber.trim()).toEqual(number.toString())
+  }
+  
+  async assertAddedToCart(name){
+    const product = await this.page.locator('.inventory_item').filter({hasText: name})
+    await expect(product.getByRole('button', {name: 'REMOVE'})).toBeVisible()
+  }
+
+  
 }

@@ -47,8 +47,8 @@ test.describe("Invalid test cases", () => {
   test("TC06: Log in with a locked out user credentials", async () => {
     await pm.loginPage.navigate();
     await pm.loginPage.login("locked_out_user", "secret_sauce");
-    await pm.loginPage.assertFailedLogin("Epic sadface: Sorry, this user has been locked out.");
+      await pm.loginPage.assertFailedLogin("Epic sadface: Sorry, this user has been locked out.");
+    });
+
+
   });
-
-
-});
