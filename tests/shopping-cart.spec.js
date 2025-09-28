@@ -30,7 +30,7 @@ test.describe("Valid test cases", async () => {
     );
   });
 
-  test.only("TC14: Verify that an item can be removed from the cart", async () => {
+  test("TC14: Verify that an item can be removed from the cart", async () => {
     await pm.inventoryPage.addToCart("Sauce Labs Backpack");
     const cartNumber = await pm.inventoryPage.getCartNumber()
     await pm.inventoryPage.openCart()
