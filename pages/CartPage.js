@@ -8,7 +8,7 @@ export default class CartPage {
     this.page = page
 
     this.cart = page.locator('.shopping_cart_link ')
-    this.continueShoppingBtn = page.getByRole('link', {name: 'Continue Shopping'})
+    this.continueShoppingBtn = page.locator('#continue-shopping')
   }
 
   async openCart(){

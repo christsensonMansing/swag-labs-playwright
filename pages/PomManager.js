@@ -2,6 +2,7 @@ import LoginPage from "./LoginPage.js";
 import InventoryPage from "./InventoryPage.js";
 import ProductPage from "./ProductPage.js";
 import CartPage from "./CartPage.js";
+import SideBar from "./SideBar.js";
 
 export default class PomManager {
 
@@ -10,6 +11,7 @@ export default class PomManager {
     this.inventoryPage = new InventoryPage(page)
     this.productPage = new ProductPage(page)
     this.cartPage = new CartPage(page)
+    this.sideBar = new SideBar(page)
   }
 
 }

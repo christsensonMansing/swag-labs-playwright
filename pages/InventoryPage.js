@@ -66,7 +66,7 @@ export default class InventoryPage {
   }
 
   async viewProduct(name){
-    await this.actions.click(this.page.getByRole('link', { name: name }))
+    await this.actions.click(this.page.getByRole('link', { name: name }).nth(0))
   }
 
   async getCartNumber(){

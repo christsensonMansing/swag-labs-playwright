@@ -13,7 +13,7 @@ export default class LoginPage {
   }
 
   async navigate() {
-    await this.actions.navigate("https://www.saucedemo.com/v1/index.html");
+    await this.actions.navigate("https://www.saucedemo.com/");
   }
 
   async login(username, password) {
