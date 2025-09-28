@@ -1,4 +1,3 @@
-import { expect } from '@playwright/test';
 import CommonActions from '../utils/CommonActions.js';
 
 export default class CartPage {
@@ -7,12 +6,8 @@ export default class CartPage {
     this.actions = new CommonActions(page)
     this.page = page
 
-    this.cart = page.locator('.shopping_cart_link ')
     this.continueShoppingBtn = page.locator('#continue-shopping')
-  }
-
-  async openCart(){
-    await this.actions.click(this.cart)
+    this.checkoutBtn = page.locator('#checkout')
   }
 
   async removeFromCart(name){
@@ -22,6 +17,10 @@ export default class CartPage {
 
   async continueShopping(){
     await this.actions.click(this.continueShoppingBtn)
+  }
+
+  async checkout(){
+    await this.actions.click(this.checkoutBtn)
   }
 
 }

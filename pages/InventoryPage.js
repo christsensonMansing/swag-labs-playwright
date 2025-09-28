@@ -9,6 +9,7 @@ export default class InventoryPage {
     this.pageTitle = page.getByText("Products");
     this.filterSelect = page.locator(".product_sort_container");
     this.cartNumber = page.locator('.shopping_cart_badge')
+    this.cart = page.locator('.shopping_cart_link ')
   }
 
 
@@ -59,6 +60,10 @@ export default class InventoryPage {
 
 
   // shopping cart functions
+
+   async openCart(){
+    await this.actions.click(this.cart)
+  }
 
   async addToCart(name){
     const product = await this.page.locator('.inventory_item').filter({hasText: name})

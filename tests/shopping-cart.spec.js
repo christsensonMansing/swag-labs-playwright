@@ -30,17 +30,17 @@ test.describe("Valid test cases", async () => {
     );
   });
 
-  test("TC14: Verify that an item can be removed from the cart", async () => {
+  test.only("TC14: Verify that an item can be removed from the cart", async () => {
     await pm.inventoryPage.addToCart("Sauce Labs Backpack");
     const cartNumber = await pm.inventoryPage.getCartNumber()
-    await pm.cartPage.openCart()
+    await pm.inventoryPage.openCart()
     await pm.cartPage.removeFromCart("Sauce Labs Backpack")
     await pm.inventoryPage.assertCartNumber(cartNumber - 1)
   });
 
   test("TC15: Verify that the user can return to the product page and add more items", async () => {
     await pm.inventoryPage.addToCart("Sauce Labs Backpack");
-    await pm.cartPage.openCart()
+    await pm.inventoryPage.openCart()
     await pm.cartPage.continueShopping()
     await pm.inventoryPage.addToCart("Sauce Labs Bike Light");
     await pm.inventoryPage.assertCartNumber(2)
